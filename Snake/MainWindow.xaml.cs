@@ -172,6 +172,7 @@ namespace Snake
         DispatcherTimer myTimer = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            myTimer = new DispatcherTimer();
             exercontrolníhovno = leng;
 
             myTimer.Tick += new EventHandler(Snake);
@@ -217,15 +218,14 @@ namespace Snake
             {
                 if(i > xs.Count-1 || i > ys.Count-1)
                 {
-                    savyx = xs[i];
-                    svaey = ys[i];
+                    xs.Add(savyx);
+                    ys.Add(svaey);
                 }
                 else
                 {
                     xs[i] = xs[i - 1];
                     ys[i] = ys[i - 1];
                 }
-
             }
             xs[0] = x;
             ys[0] = y;
