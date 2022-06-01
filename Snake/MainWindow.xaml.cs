@@ -201,6 +201,20 @@ namespace Snake
         DispatcherTimer myTimer = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ys.Clear();
+            xs.Clear();
+            scores = 0;
+            speed = 300;
+
+            x = 8;
+            y = 4;
+
+            xkostka = 0;
+            ykostka = 0;
+
+            round = 0;
+            way = 0;
+            leng = 5;
             myTimer = new DispatcherTimer();
             exercontrolníhovno = leng;
 
