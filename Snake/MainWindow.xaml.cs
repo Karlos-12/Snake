@@ -47,7 +47,10 @@ namespace Snake
         {
             Height = 100,
             Width = 100,
-            Fill = new SolidColorBrush(Color.FromRgb(128, 128, 0))
+            Fill = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(@"hm jmgjkh.png", UriKind.Relative))
+            }
         };
 
         public void scored()
