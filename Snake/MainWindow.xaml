@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1600" Background="#FF171717" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="1300" Width="1900" Background="#FF171717" KeyDown="Window_KeyDown">
     <Grid>
-        <Canvas x:Name="main" HorizontalAlignment="Left" Width="1600" Height="884" VerticalAlignment="Top" Background="#FF1A1A1A"/>
-        <Button Content="Play!" Margin="1270,884,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
+        <Canvas x:Name="main" HorizontalAlignment="Left" Width="1700" Height="900" VerticalAlignment="Top" Background="#FF1A1A1A"/>
+        <Button Content="Play!" Margin="1370,900,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
+        <Label x:Name="score" Content="0000" Margin="0,900,0,0" FontSize="64" FontFamily="Consolas" FontWeight="Bold" Background="{x:Null}" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="264"/>
 
 
     </Grid>

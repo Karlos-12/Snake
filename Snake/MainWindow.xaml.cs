@@ -23,6 +23,9 @@ namespace Snake
     /// </summary>
     public partial class MainWindow : Window
     {
+        int scores = 0;
+        int speed = 300;
+
         int x = 8;
         int y = 4;
 
@@ -46,6 +49,24 @@ namespace Snake
             Width = 100,
             Fill = new SolidColorBrush(Color.FromRgb(128, 128, 0))
         };
+
+        public void scored()
+        {
+            scores += 10;
+            if(scores <= 9)
+            {
+                score.Content = "000" + scores;
+            }
+            else if (scores <= 99)
+            {
+                score.Content = "00" + scores;
+            }
+            else if (scores <= 999)
+            {
+                score.Content = "0" + scores;
+            }
+
+        }
 
         public void genratorjakdebil()
         {
@@ -88,7 +109,7 @@ namespace Snake
                     break;
 
                 case 1:
-                    if (x == 15)
+                    if (x == 16)
                     {
                         x = 0;
                     }
@@ -112,7 +133,7 @@ namespace Snake
                 case 3:
                     if (x == 0)
                     {
-                        x = 15;
+                        x = 16;
                     }
                     else
                     {
@@ -134,6 +155,9 @@ namespace Snake
             {
                 if (x == xkostka && y == ykostka)
                 {
+                    scored();
+                    speed -= 25;
+                    myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
                     genratorjakdebil();
                     leng++;
                 }
@@ -160,8 +184,10 @@ namespace Snake
         {
             Height = 100,
             Width = 100,
-            Fill = new SolidColorBrush(Color.FromRgb(0, 128, 0))
-        };
+            Fill = new ImageBrush{
+                ImageSource = new BitmapImage(new Uri(@"hlava more.png", UriKind.Relative))
+            }
+            };
 
         public void Draw()
         {         
@@ -176,7 +202,7 @@ namespace Snake
             exercontrolníhovno = leng;
 
             myTimer.Tick += new EventHandler(Snake);
-            myTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
 
             xs.Add(0);
             ys.Add(0);
@@ -249,7 +275,7 @@ namespace Snake
             {
                 Height = 100,
                 Width = 100,
-                Fill = new SolidColorBrush(Color.FromRgb(128, 0, 0))
+                Fill = new SolidColorBrush(Color.FromArgb(128, 16, 82, 14))
             };
 
             
