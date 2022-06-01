@@ -188,7 +188,7 @@ namespace Snake
             Height = 100,
             Width = 100,
             Fill = new ImageBrush{
-                ImageSource = new BitmapImage(new Uri(@"hlava more.png", UriKind.Relative))
+                ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
             }
             };
 
