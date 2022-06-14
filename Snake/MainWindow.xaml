@@ -10,6 +10,7 @@
         <Canvas x:Name="main" HorizontalAlignment="Left" Width="1700" Height="900" VerticalAlignment="Top" Background="#FF1A1A1A"/>
         <Button x:Name="fdgd" Content="Play!" Margin="1370,900,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
         <Label x:Name="score" Content="0000" Margin="0,900,0,0" FontSize="64" FontFamily="Consolas" FontWeight="Bold" Background="{x:Null}" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="264"/>
+        <Button x:Name="fdgd_Copy" Content="Play!" Margin="1027,900,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
 
 
     </Grid>

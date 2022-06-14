@@ -320,11 +320,11 @@ namespace Snake
             x = 8;
             y = 4;
 
-            xkostka = 0;
-            ykostka = 0;
+            xkostka = -2;
+            ykostka = -2;
 
-            xburg = 0;
-            yburg = 0;
+            xburg = -2;
+            yburg = -2;
 
             round = 0;
             way = 0;
@@ -335,8 +335,8 @@ namespace Snake
             myTimer.Tick += new EventHandler(Snake);
             myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
 
-            xs.Add(0);
-            ys.Add(0);
+            xs.Add(-2);
+            ys.Add(-2);
 
             for (int i = 0; i < leng; i++)
             {
