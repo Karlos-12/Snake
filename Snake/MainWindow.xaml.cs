@@ -21,6 +21,10 @@ namespace Snake
 
     public partial class MainWindow : Window
     {
+        int bigup = 1;
+        int hulx = -2;
+        int huly = -2;
+
         int scale = 100;
         int sizefx = 16;
         int sizefy = 8;
@@ -48,8 +52,8 @@ namespace Snake
         {
             scale = mera;
 
-            sizefx = 1700/mera;
-            sizefy = 900/mera;
+            sizefx = 1600/mera;
+            sizefy = 800/mera;
 
             kostka = new Rectangle
             {
@@ -78,6 +82,16 @@ namespace Snake
                 Fill = new ImageBrush
                 {
                     ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
+                }
+            };
+
+            joint = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"jointec.png", UriKind.Relative))
                 }
             };
         }
@@ -114,10 +128,21 @@ namespace Snake
                     ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
                 }
             };
+
+            joint = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"jointec.png", UriKind.Relative))
+                }
+            };
         }
 
         Rectangle kostka = null;
         Rectangle burgir = null;
+        Rectangle joint = null;
 
         public void scored(int nasob)
         {
@@ -145,99 +170,129 @@ namespace Snake
             yburg = -2;
             xburg = -2;
 
+            hulx = -2;
+            huly = -2;
+
             Random random = new Random();
 
-            switch(random.Next(4))
+            if (scores > bigup * 100)
             {
-                case 0:
-                    bool doesd = true;
-                    do
+                bool doesdf = true;
+                do
+                {
+                    int csd = 0;
+                    huly = random.Next(sizefy);
+                    hulx = random.Next(sizefx);
+                    for (int i = xs.Count - 1; i > 0; i--)
                     {
-                        int cd = 0;
-                        ykostka = random.Next(sizefy);
-                        xkostka = random.Next(sizefx);
-                        for (int i = xs.Count - 1; i > 0; i--)
+                        if (xs[i] == hulx && ys[i] == huly)
                         {
-                            if (xs[i] == xkostka && ys[i] == ykostka)
-                            {
-                                cd++;
-                            }
-                        }
-                        if (cd == 0)
-                        {
-                            doesd = false;
+                            csd++;
                         }
                     }
-                    while (doesd == true);
-
-                    break;
-                case 1:
-                    bool doesx = true;
-                    do
+                    if (csd == 0)
                     {
-                        int cx = 0;
-                        ykostka = random.Next(sizefy);
-                        xkostka = random.Next(sizefx);
-                        for (int i = xs.Count - 1; i > 0; i--)
+                        doesdf = false;
+                    }
+                }
+                while (doesdf == true);
+
+                bigup++;
+            }
+            else
+            {
+                switch (random.Next(4))
+                {
+                    case 0:
+                        bool doesd = true;
+                        do
                         {
-                            if (xs[i] == xkostka && ys[i] == ykostka)
+                            int cd = 0;
+                            ykostka = random.Next(sizefy);
+                            xkostka = random.Next(sizefx);
+                            for (int i = xs.Count - 1; i > 0; i--)
                             {
-                                cx++;
+                                if (xs[i] == xkostka && ys[i] == ykostka)
+                                {
+                                    cd++;
+                                }
+                            }
+                            if (cd == 0)
+                            {
+                                doesd = false;
                             }
                         }
-                        if (cx == 0)
-                        {
-                            doesx = false;
-                        }
-                    
-                    }
-                    while (doesx == true);
+                        while (doesd == true);
 
-                    break;
-                case 2:
-                    bool doesy = true;
-                    do
-                    {
-                        int c = 0;
-                        ykostka = random.Next(sizefy);
-                        xkostka = random.Next(sizefx);
-                        for (int i = xs.Count - 1; i > 0; i--)
+                        break;
+                    case 1:
+                        bool doesx = true;
+                        do
                         {
-                            if (xs[i] == xkostka && ys[i] == ykostka)
+                            int cx = 0;
+                            ykostka = random.Next(sizefy);
+                            xkostka = random.Next(sizefx);
+                            for (int i = xs.Count - 1; i > 0; i--)
                             {
-                                c++;
+                                if (xs[i] == xkostka && ys[i] == ykostka)
+                                {
+                                    cx++;
+                                }
+                            }
+                            if (cx == 0)
+                            {
+                                doesx = false;
+                            }
+
+                        }
+                        while (doesx == true);
+
+                        break;
+                    case 2:
+                        bool doesy = true;
+                        do
+                        {
+                            int c = 0;
+                            ykostka = random.Next(sizefy);
+                            xkostka = random.Next(sizefx);
+                            for (int i = xs.Count - 1; i > 0; i--)
+                            {
+                                if (xs[i] == xkostka && ys[i] == ykostka)
+                                {
+                                    c++;
+                                }
+                            }
+                            if (c == 0)
+                            {
+                                doesy = false;
                             }
                         }
-                        if(c == 0)
-                        {
-                            doesy = false;
-                        }
-                    }
-                    while (doesy == true);
+                        while (doesy == true);
 
-                    break;
-                case 3:
+                        break;
+                    case 3:
 
-                    bool doesS = true;
-                    do
-                    {
-                        int cs = 0;
-                        yburg = random.Next(sizefy);
-                        xburg = random.Next(sizefx);
-                        for (int i = xs.Count - 1; i > 0; i--)
+                        bool doesS = true;
+                        do
                         {
-                            if (xs[i] == xkostka && ys[i] == ykostka)
+                            int cs = 0;
+                            yburg = random.Next(sizefy);
+                            xburg = random.Next(sizefx);
+                            for (int i = xs.Count - 1; i > 0; i--)
                             {
-                                cs++;
+                                if (xs[i] == xkostka && ys[i] == ykostka)
+                                {
+                                    cs++;
+                                }
+                            }
+                            if (cs == 0)
+                            {
+                                doesS = false;
                             }
                         }
-                        if (cs == 0)
-                        {
-                            doesS = false;
-                        }
-                    }
-                    while (doesS == true);
-                    break;
+                        while (doesS == true);
+                        break;
+                }
             }
             
         }
@@ -309,7 +364,7 @@ namespace Snake
                 if (x == xkostka && y == ykostka)
                 {
                     scored(1);
-                    speed -= 25;
+                    speed -= 10;
                     myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
                     genratorjakdebil();
                     leng++;
@@ -317,17 +372,22 @@ namespace Snake
                 else if(x == xburg && y == yburg)
                 {
                     scored(2);
-                    speed -= 15;
+                    speed -= 5;
                     myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
                     genratorjakdebil();
                     leng++;
                 }
+                else if(x == hulx && y == huly)
+                {
+                    changesize(scale - 20);
+                    genratorjakdebil();
+                }    
             }
 
             if (exercontrolníhovno == 0)
-           {
+            {
                 genratorjakdebil();
-           }
+            }
 
             main.Children.Add(kostka);
             Canvas.SetLeft(kostka, xkostka * scale);
@@ -336,6 +396,10 @@ namespace Snake
             main.Children.Add(burgir);
             Canvas.SetLeft(burgir, xburg * scale);
             Canvas.SetTop(burgir, yburg * scale);
+
+            main.Children.Add(joint);
+            Canvas.SetLeft(joint, hulx*scale);
+            Canvas.SetTop(joint, huly*scale);
         }
 
         public void ende()
@@ -357,6 +421,7 @@ namespace Snake
         DispatcherTimer myTimer = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            bigup = 0;
             fdgd.IsEnabled = false;
             ys.Clear();
             xs.Clear();
@@ -464,11 +529,6 @@ namespace Snake
         private void fg(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        public void dfs(object sender, RoutedEventArgs e)
-        {
-            changesize(scale - 10);
         }
     }
 }

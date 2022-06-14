@@ -11,7 +11,6 @@
         <Button x:Name="fdgd" Content="Play!" Margin="1370,900,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
         <Label x:Name="score" Content="0000" Margin="0,900,0,0" FontSize="64" FontFamily="Consolas" FontWeight="Bold" Background="{x:Null}" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="264"/>
         <Button x:Name="fdgd_Copy" Content="Report" Margin="1027,900,0,0" Click="fg" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
-        <Button x:Name="fdgd_Copy1" Content="Report" Margin="620,915,0,0" Click="dfs" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="134"/>
 
 
     </Grid>
