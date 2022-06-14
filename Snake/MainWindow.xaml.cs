@@ -100,14 +100,19 @@ namespace Snake
                     bool doesd = true;
                     do
                     {
+                        int cd = 0;
                         ykostka = random.Next(8);
                         xkostka = random.Next(8);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
-                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            if (xs[i] == xkostka && ys[i] == ykostka)
                             {
-                                doesd = false;
+                                cd++;
                             }
+                        }
+                        if (cd == 0)
+                        {
+                            doesd = false;
                         }
                     }
                     while (doesd == true);
@@ -117,15 +122,21 @@ namespace Snake
                     bool doesx = true;
                     do
                     {
+                        int cx = 0;
                         ykostka = random.Next(8);
                         xkostka = random.Next(8);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
-                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            if (xs[i] == xkostka && ys[i] == ykostka)
                             {
-                                doesx = false;
+                                cx++;
                             }
                         }
+                        if (cx == 0)
+                        {
+                            doesx = false;
+                        }
+                    
                     }
                     while (doesx == true);
 
@@ -134,14 +145,19 @@ namespace Snake
                     bool doesy = true;
                     do
                     {
+                        int c = 0;
                         ykostka = random.Next(8);
                         xkostka = random.Next(8);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
-                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            if (xs[i] == xkostka && ys[i] == ykostka)
                             {
-                                doesy = false;
+                                c++;
                             }
+                        }
+                        if(c == 0)
+                        {
+                            doesy = false;
                         }
                     }
                     while (doesy == true);
@@ -152,14 +168,19 @@ namespace Snake
                     bool doesS = true;
                     do
                     {
+                        int cs = 0;
                         yburg = random.Next(8);
                         xburg = random.Next(8);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
-                            if (xs[i] != xburg && ys[i] != yburg)
+                            if (xs[i] == xkostka && ys[i] == ykostka)
                             {
-                                doesS = false;
+                                cs++;
                             }
+                        }
+                        if (cs == 0)
+                        {
+                            doesS = false;
                         }
                     }
                     while (doesS == true);
