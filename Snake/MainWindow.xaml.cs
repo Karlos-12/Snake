@@ -18,11 +18,13 @@ using System.Windows.Ink;
 
 namespace Snake
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        int scale = 100;
+        int sizefx = 16;
+        int sizefy = 8;
+
         int scores = 0;
         int speed = 300;
 
@@ -42,29 +44,80 @@ namespace Snake
         List<int> xs = new List<int>();
         List<int> ys = new List<int>();
 
+        public void changesize(int mera)
+        {
+            scale = mera;
+
+            sizefx = 1700/mera;
+            sizefy = 900/mera;
+
+            kostka = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"hm jmgjkh.png", UriKind.Relative))
+                }
+            };
+
+            burgir = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"fdjgbsreghwiefnjkseangkowanmG.png", UriKind.Relative))
+                }
+            };
+
+            head = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
+                }
+            };
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-        }
-        Rectangle kostka = new Rectangle
-        {
-            Height = 100,
-            Width = 100,
-            Fill = new ImageBrush
+            kostka = new Rectangle
             {
-                ImageSource = new BitmapImage(new Uri(@"hm jmgjkh.png", UriKind.Relative))
-            }
-        };
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"hm jmgjkh.png", UriKind.Relative))
+                }
+            };
 
-        Rectangle burgir = new Rectangle
-        {
-            Height = 100,
-            Width = 100,
-            Fill = new ImageBrush
+            burgir = new Rectangle
             {
-                ImageSource = new BitmapImage(new Uri(@"fdjgbsreghwiefnjkseangkowanmG.png", UriKind.Relative))
-            }
-        };
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"fdjgbsreghwiefnjkseangkowanmG.png", UriKind.Relative))
+                }
+            };
+
+            head = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
+                }
+            };
+        }
+
+        Rectangle kostka = null;
+        Rectangle burgir = null;
 
         public void scored(int nasob)
         {
@@ -101,8 +154,8 @@ namespace Snake
                     do
                     {
                         int cd = 0;
-                        ykostka = random.Next(8);
-                        xkostka = random.Next(8);
+                        ykostka = random.Next(sizefy);
+                        xkostka = random.Next(sizefx);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
                             if (xs[i] == xkostka && ys[i] == ykostka)
@@ -123,8 +176,8 @@ namespace Snake
                     do
                     {
                         int cx = 0;
-                        ykostka = random.Next(8);
-                        xkostka = random.Next(8);
+                        ykostka = random.Next(sizefy);
+                        xkostka = random.Next(sizefx);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
                             if (xs[i] == xkostka && ys[i] == ykostka)
@@ -146,8 +199,8 @@ namespace Snake
                     do
                     {
                         int c = 0;
-                        ykostka = random.Next(8);
-                        xkostka = random.Next(8);
+                        ykostka = random.Next(sizefy);
+                        xkostka = random.Next(sizefx);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
                             if (xs[i] == xkostka && ys[i] == ykostka)
@@ -169,8 +222,8 @@ namespace Snake
                     do
                     {
                         int cs = 0;
-                        yburg = random.Next(8);
-                        xburg = random.Next(8);
+                        yburg = random.Next(sizefy);
+                        xburg = random.Next(sizefx);
                         for (int i = xs.Count - 1; i > 0; i--)
                         {
                             if (xs[i] == xkostka && ys[i] == ykostka)
@@ -198,8 +251,8 @@ namespace Snake
             switch (way)
             {
                 case 0:
-                    if (y == 8)
-                    {
+                    if (y == sizefy)
+                    {        
                         y = 0;
                     }
                     else
@@ -209,7 +262,7 @@ namespace Snake
                     break;
 
                 case 1:
-                    if (x == 16)
+                    if (x == sizefx)
                     {
                         x = 0;
                     }
@@ -222,7 +275,7 @@ namespace Snake
                 case 2:
                     if (y == 0)
                     {
-                        y = 8;
+                        y = sizefy;
                     }
                     else
                     {
@@ -233,7 +286,7 @@ namespace Snake
                 case 3:
                     if (x == 0)
                     {
-                        x = 16;
+                        x = sizefx;
                     }
                     else
                     {
@@ -277,12 +330,12 @@ namespace Snake
            }
 
             main.Children.Add(kostka);
-            Canvas.SetLeft(kostka, xkostka * 100);
-            Canvas.SetTop(kostka, ykostka * 100);
+            Canvas.SetLeft(kostka, xkostka * scale);
+            Canvas.SetTop(kostka, ykostka * scale);
 
             main.Children.Add(burgir);
-            Canvas.SetLeft(burgir, xburg * 100);
-            Canvas.SetTop(burgir, yburg * 100);
+            Canvas.SetLeft(burgir, xburg * scale);
+            Canvas.SetTop(burgir, yburg * scale);
         }
 
         public void ende()
@@ -293,20 +346,13 @@ namespace Snake
             fdgd.IsEnabled = true;
         }
 
-        Rectangle head = new Rectangle
-        {
-            Height = 100,
-            Width = 100,
-            Fill = new ImageBrush{
-                ImageSource = new BitmapImage(new Uri(@"hlavamore.png", UriKind.Relative))
-            }
-            };
+        Rectangle head = null;
 
         public void Draw()
         {         
             main.Children.Add(head);
-            Canvas.SetLeft(head, x * 100);
-            Canvas.SetTop(head, y * 100);
+            Canvas.SetLeft(head, x * scale);
+            Canvas.SetTop(head, y * scale);
         }
         DispatcherTimer myTimer = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -404,15 +450,25 @@ namespace Snake
         {
             Rectangle body = new Rectangle 
             {
-                Height = 100,
-                Width = 100,
+                Height = scale,
+                Width = scale,
                 Fill = new SolidColorBrush(Color.FromArgb(128, 16, 82, 14))
             };
 
             
             c.Children.Add(body);
-            Canvas.SetLeft(body, x * 100);
-            Canvas.SetTop(body, y * 100);
+            Canvas.SetLeft(body, x * scale);
+            Canvas.SetTop(body, y * scale);
+        }
+
+        private void fg(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void dfs(object sender, RoutedEventArgs e)
+        {
+            changesize(scale - 10);
         }
     }
 }
