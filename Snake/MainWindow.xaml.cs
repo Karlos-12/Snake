@@ -167,9 +167,9 @@ namespace Snake
             }
 
            if(exercontrolníhovno == 0)
-            {
+           {
                 genratorjakdebil();
-            }
+           }
 
             main.Children.Add(kostka);
             Canvas.SetLeft(kostka, xkostka * 100);
@@ -226,8 +226,8 @@ namespace Snake
 
             for (int i = 0; i < leng; i++)
             {
-                xs.Add(0);
-                ys.Add(0);
+                xs.Add(-2);
+                ys.Add(-2);
             }
 
             myTimer.Start();
@@ -255,8 +255,8 @@ namespace Snake
 
         public void listup()
         {
-            int savyx = 0;
-            int svaey = 0;
+            int savyx = -2;
+            int svaey = -2;
             for(int i = leng; i > 0; i--)
             {
                 if(i > xs.Count-1 || i > ys.Count-1)
