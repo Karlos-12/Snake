@@ -290,6 +290,7 @@ namespace Snake
             MessageBox.Show("najs more si debil fakt chudák žížala");
             myTimer.Stop();
             main.Children.Clear();
+            fdgd.IsEnabled = true;
         }
 
         Rectangle head = new Rectangle
@@ -310,6 +311,7 @@ namespace Snake
         DispatcherTimer myTimer = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            fdgd.IsEnabled = false;
             ys.Clear();
             xs.Clear();
             scores = 0;
