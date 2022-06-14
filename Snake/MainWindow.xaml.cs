@@ -29,8 +29,11 @@ namespace Snake
         int x = 8;
         int y = 4;
 
-        int xkostka = 0;
-        int ykostka = 0;
+        int xkostka = -2;
+        int ykostka = -2;
+
+        int xburg = -2;
+        int yburg = -2;
 
         int round = 0;
         int way = 0;
@@ -53,9 +56,19 @@ namespace Snake
             }
         };
 
-        public void scored()
+        Rectangle burgir = new Rectangle
         {
-            scores += 10;
+            Height = 100,
+            Width = 100,
+            Fill = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(@"fdjgbsreghwiefnjkseangkowanmG.png", UriKind.Relative))
+            }
+        };
+
+        public void scored(int nasob)
+        {
+            scores += 10 * nasob;
             if(scores <= 9)
             {
                 score.Content = "000" + scores;
@@ -73,22 +86,85 @@ namespace Snake
 
         public void genratorjakdebil()
         {
-            
+            ykostka = -2;
+            xkostka = -2;
+
+            yburg = -2;
+            xburg = -2;
+
             Random random = new Random();
-            bool does = true;
-            do
-            {  
-                ykostka = random.Next(8);
-                xkostka = random.Next(8);
-                for(int i = xs.Count - 1; i > 0; i--)
-                {
-                    if(xs[i] != xkostka && ys[i] != ykostka)
+
+            switch(random.Next(4))
+            {
+                case 0:
+                    bool doesd = true;
+                    do
                     {
-                        does = false;
+                        ykostka = random.Next(8);
+                        xkostka = random.Next(8);
+                        for (int i = xs.Count - 1; i > 0; i--)
+                        {
+                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            {
+                                doesd = false;
+                            }
+                        }
                     }
-                }
+                    while (doesd == true);
+
+                    break;
+                case 1:
+                    bool doesx = true;
+                    do
+                    {
+                        ykostka = random.Next(8);
+                        xkostka = random.Next(8);
+                        for (int i = xs.Count - 1; i > 0; i--)
+                        {
+                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            {
+                                doesx = false;
+                            }
+                        }
+                    }
+                    while (doesx == true);
+
+                    break;
+                case 2:
+                    bool doesy = true;
+                    do
+                    {
+                        ykostka = random.Next(8);
+                        xkostka = random.Next(8);
+                        for (int i = xs.Count - 1; i > 0; i--)
+                        {
+                            if (xs[i] != xkostka && ys[i] != ykostka)
+                            {
+                                doesy = false;
+                            }
+                        }
+                    }
+                    while (doesy == true);
+
+                    break;
+                case 3:
+
+                    bool doesS = true;
+                    do
+                    {
+                        yburg = random.Next(8);
+                        xburg = random.Next(8);
+                        for (int i = xs.Count - 1; i > 0; i--)
+                        {
+                            if (xs[i] != xburg && ys[i] != yburg)
+                            {
+                                doesS = false;
+                            }
+                        }
+                    }
+                    while (doesS == true);
+                    break;
             }
-            while(does == true);
             
         }
         int exercontrolníhovno = 0;
@@ -158,15 +234,23 @@ namespace Snake
             {
                 if (x == xkostka && y == ykostka)
                 {
-                    scored();
+                    scored(1);
                     speed -= 25;
+                    myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
+                    genratorjakdebil();
+                    leng++;
+                }
+                else if(x == xburg && y == yburg)
+                {
+                    scored(2);
+                    speed -= 15;
                     myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
                     genratorjakdebil();
                     leng++;
                 }
             }
 
-           if(exercontrolníhovno == 0)
+            if (exercontrolníhovno == 0)
            {
                 genratorjakdebil();
            }
@@ -174,6 +258,10 @@ namespace Snake
             main.Children.Add(kostka);
             Canvas.SetLeft(kostka, xkostka * 100);
             Canvas.SetTop(kostka, ykostka * 100);
+
+            main.Children.Add(burgir);
+            Canvas.SetLeft(burgir, xburg * 100);
+            Canvas.SetTop(burgir, yburg * 100);
         }
 
         public void ende()
@@ -211,6 +299,9 @@ namespace Snake
 
             xkostka = 0;
             ykostka = 0;
+
+            xburg = 0;
+            yburg = 0;
 
             round = 0;
             way = 0;
