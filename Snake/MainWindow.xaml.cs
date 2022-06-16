@@ -15,12 +15,15 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
 using System.Windows.Ink;
+using SharpDX.XInput;
 
 namespace Snake
 {
 
     public partial class MainWindow : Window
     {
+        Controller cntr1 = new Controller(UserIndex.One);
+
         int bigup = 1;
         int hulx = -2;
         int huly = -2;
@@ -99,6 +102,7 @@ namespace Snake
         public MainWindow()
         {
             InitializeComponent();
+
             kostka = new Rectangle
             {
                 Height = scale,
@@ -297,9 +301,12 @@ namespace Snake
             
         }
         int exercontrolníhovno = 0;
+        State state;
 
         public void Snake(object source, EventArgs e)
         {
+            
+            
             exercontrolníhovno--;
             round++;
             main.Children.Clear();
@@ -419,6 +426,7 @@ namespace Snake
             Canvas.SetTop(head, y * scale);
         }
         DispatcherTimer myTimer = new DispatcherTimer();
+        DispatcherTimer controler2 = new DispatcherTimer();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bigup = 0;
@@ -440,11 +448,16 @@ namespace Snake
             round = 0;
             way = 0;
             leng = 5;
-            myTimer = new DispatcherTimer();
+            
             exercontrolníhovno = leng;
 
+            myTimer = new DispatcherTimer();
             myTimer.Tick += new EventHandler(Snake);
             myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
+
+            controler2 = new DispatcherTimer();
+            controler2.Tick += new EventHandler(contorler);
+            controler2.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
             xs.Add(-2);
             ys.Add(-2);
@@ -456,9 +469,33 @@ namespace Snake
             }
 
             myTimer.Start();
+            controler2.Start();
+        }
+        bool contolremod = false;
+        public void contorler(object source, EventArgs e)
+        {
+            state = cntr1.GetState();
+            if (contolremod == true)
+            {
+                switch (state.Gamepad.Buttons)
+                {
+                    case GamepadButtonFlags.DPadUp:
+                        way = 2;
+                        break;
+                    case GamepadButtonFlags.DPadDown:
+                        way = 0;
+                        break;
+                    case GamepadButtonFlags.DPadRight:
+                        way = 1;
+                        break;
+                    case GamepadButtonFlags.DPadLeft:
+                        way = 3;
+                        break;
+                }
+            }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        public void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.W)
             {
@@ -529,6 +566,18 @@ namespace Snake
         private void fg(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void controler_Click(object sender, RoutedEventArgs e)
+        {
+            if(controler1.IsChecked == true)
+            {
+                contolremod = true;
+            }
+            else
+            {
+                contolremod = false;
+            }
         }
     }
 }
