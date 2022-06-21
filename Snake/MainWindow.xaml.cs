@@ -56,7 +56,7 @@ namespace Snake
         public void changesize(int mera)
         {
             try {
-                scale = mera;
+                scale = mera -20;
 
                 sizefx = 1600 / mera;
                 sizefy = 800 / mera;
@@ -393,7 +393,7 @@ namespace Snake
                 }
                 else if(x == hulx && y == huly)
                 {
-                    changesize(scale - 20);
+                    changesize(scale);
                     genratorjakdebil();
                 }    
             }
