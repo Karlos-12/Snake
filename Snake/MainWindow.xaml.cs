@@ -24,6 +24,8 @@ namespace Snake
     {
         Controller cntr1 = new Controller(UserIndex.One);
 
+        int highscor = 410;
+
         int bigup = 1;
         int hulx = -2;
         int huly = -2;
@@ -415,6 +417,8 @@ namespace Snake
             myTimer.Stop();
             main.Children.Clear();
             fdgd.IsEnabled = true;
+            Score scer = new Score(scores, highscor);
+            scer.Show();
         }
 
         Rectangle head = null;
@@ -474,7 +478,7 @@ namespace Snake
         bool contolremod = false;
         public void contorler(object source, EventArgs e)
         {
-            state = cntr1.GetState();
+            //state = cntr1.GetState();
             if (contolremod == true)
             {
                 switch (state.Gamepad.Buttons)
