@@ -308,7 +308,7 @@ namespace Snake
         }
         int exercontrolníhovno = 0;
         State state;
-
+        bool hull = false;
         public void Snake(object source, EventArgs e)
         {
             
@@ -395,6 +395,7 @@ namespace Snake
                 {
                     changesize(scale);
                     genratorjakdebil();
+                    vyhulost();
                 }    
             }
 
@@ -567,7 +568,19 @@ namespace Snake
                 Width = scale,
                 Fill = new SolidColorBrush(Color.FromArgb(128, 16, 82, 14))
             };
-
+            if(hull == true)
+            {
+                body = new Rectangle
+                {
+                    Height = scale,
+                    Width = scale,
+                    Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(@"rainbow-spectrum-texture-background-iridescent-vector-8792913.jpg", UriKind.Relative))
+                    }
+                };
+                hull = false;
+            }
             
             c.Children.Add(body);
             Canvas.SetLeft(body, x * scale);
@@ -593,15 +606,7 @@ namespace Snake
 
         public void vyhulost()
         {
-            body = new Rectangle
-            {
-                Height = scale,
-                Width = scale,
-                Fill = new ImageBrush
-                {
-                    ImageSource = new BitmapImage(new Uri(@"rainbow-spectrum-texture-background-iridescent-vector-8792913.jpg", UriKind.Relative))
-                }
-            };
+            hull = true;
         }
     }
 }
