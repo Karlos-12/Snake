@@ -55,10 +55,14 @@ namespace Snake
 
         public void changesize(int mera)
         {
-            scale = mera;
+            try {
+                scale = mera;
 
-            sizefx = 1600/mera;
-            sizefy = 800/mera;
+                sizefx = 1600 / mera;
+                sizefy = 800 / mera;
+            }
+            catch { };
+           
 
             kostka = new Rectangle
             {
@@ -374,7 +378,8 @@ namespace Snake
                 {
                     scored(1);
                     speed -= 10;
-                    myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
+                    try { myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed); }
+                    catch { };
                     genratorjakdebil();
                     leng++;
                 }
