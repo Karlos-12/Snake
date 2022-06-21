@@ -56,10 +56,10 @@ namespace Snake
         public void changesize(int mera)
         {
             try {
-                scale = mera -20;
+                scale = (mera -20);
 
-                sizefx = 1600 / mera;
-                sizefy = 800 / mera;
+                sizefx = 1600 / (mera -20);
+                sizefy = 800 / (mera - 20);
             }
             catch { };
            
