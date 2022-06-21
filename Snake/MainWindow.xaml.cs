@@ -17,14 +17,13 @@ using System.Windows.Threading;
 using System.Windows.Ink;
 using SharpDX.XInput;
 
+
 namespace Snake
 {
 
     public partial class MainWindow : Window
     {
         Controller cntr1 = new Controller(UserIndex.One);
-
-        int highscor = 410;
 
         int bigup = 1;
         int hulx = -2;
@@ -310,6 +309,7 @@ namespace Snake
         int exercontrolníhovno = 0;
         State state;
         bool hull = false;
+
         public void Snake(object source, EventArgs e)
         {      
             
@@ -423,7 +423,7 @@ namespace Snake
             myTimer.Stop();
             main.Children.Clear();
             fdgd.IsEnabled = true;
-            Score scer = new Score(scores, highscor);
+            Score scer = new Score(scores);
             scer.Show();
         }
 

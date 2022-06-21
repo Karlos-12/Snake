@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
-        Title="Score" Height="450" Width="900" Foreground="{x:Null}" Background="#FF1A1A1A">
+        Title="Score" Height="450" Width="900" Foreground="{x:Null}" Background="#FF1A1A1A" Loaded="Window_Loaded">
     <Grid>
         <Label x:Name="sc" Content="Label" Height="108" Margin="0,100,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Consolas" FontSize="90" FontWeight="Bold"/>
         <ProgressBar x:Name="prr" Margin="50,0,50,50" Height="102" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="White" Foreground="#FF5BB76C"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="71" Margin="229,333,0,0" VerticalAlignment="Top" Width="427" Click="Button_Click"/>
 
     </Grid>
 </Window>
