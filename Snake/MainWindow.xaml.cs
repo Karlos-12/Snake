@@ -557,10 +557,11 @@ namespace Snake
                 }
             }
         }
+        Rectangle body;
 
         private void drawexces(int x, int y, Canvas c)
         {
-            Rectangle body = new Rectangle 
+            body = new Rectangle 
             {
                 Height = scale,
                 Width = scale,
@@ -588,6 +589,19 @@ namespace Snake
             {
                 contolremod = false;
             }
+        }
+
+        public void vyhulost()
+        {
+            body = new Rectangle
+            {
+                Height = scale,
+                Width = scale,
+                Fill = new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri(@"rainbow-spectrum-texture-background-iridescent-vector-8792913.jpg", UriKind.Relative))
+                }
+            };
         }
     }
 }
