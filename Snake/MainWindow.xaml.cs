@@ -478,9 +478,10 @@ namespace Snake
         bool contolremod = false;
         public void contorler(object source, EventArgs e)
         {
-            //state = cntr1.GetState();
+            
             if (contolremod == true)
             {
+                state = cntr1.GetState();
                 switch (state.Gamepad.Buttons)
                 {
                     case GamepadButtonFlags.DPadUp:
