@@ -142,6 +142,7 @@ namespace Snake
                     ImageSource = new BitmapImage(new Uri(@"jointec.png", UriKind.Relative))
                 }
             };
+          
         }
 
         Rectangle kostka = null;
@@ -304,8 +305,7 @@ namespace Snake
         State state;
 
         public void Snake(object source, EventArgs e)
-        {
-            
+        {      
             
             exercontrolníhovno--;
             round++;

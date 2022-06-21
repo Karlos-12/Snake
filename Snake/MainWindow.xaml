@@ -95,7 +95,7 @@
         <Button x:Name="fdgd" Content="Play!" Margin="1370,900,0,0" Click="Button_Click" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
         <Label x:Name="score" Content="0000" Margin="0,900,0,0" FontSize="64" FontFamily="Consolas" FontWeight="Bold" Background="{x:Null}" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="264"/>
         <Button x:Name="fdgd_Copy" Content="Report" Margin="1027,900,0,0" Click="fg" Height="100" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Background="#7F2E2E2E" BorderBrush="{x:Null}" Foreground="White" FontFamily="Consolas" HorizontalAlignment="Left" Width="330"/>
-        <RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="controler1" Content="Controler" HorizontalAlignment="Left" Height="100" Margin="571,908,0,0" VerticalAlignment="Top" Width="403" FontSize="64" FontWeight="Bold" FontFamily="Consolas" Background="White" BorderBrush="{x:Null}" Foreground="White" ClickMode="Press" Click="controler_Click"/>
+        <RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="controler1" Content="Controler" HorizontalAlignment="Left" Height="100" Margin="619,904,0,0" VerticalAlignment="Top" Width="403" FontSize="64" FontWeight="Bold" FontFamily="Consolas" Background="White" BorderBrush="{x:Null}" Foreground="White" ClickMode="Press" Click="controler_Click"/>
 
 
     </Grid>
