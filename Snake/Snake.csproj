@@ -25,6 +25,9 @@
     <None Update="jointec.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="rainbow-spectrum-texture-background-iridescent-vector-8792913.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
