@@ -24,6 +24,8 @@ namespace Snake
     {
         Controller cntr1 = new Controller(UserIndex.One);
 
+        int highscor = 410;
+
         int bigup = 1;
         int hulx = -2;
         int huly = -2;
@@ -53,10 +55,14 @@ namespace Snake
 
         public void changesize(int mera)
         {
-            scale = mera;
+            try {
+                scale = (mera -20);
 
-            sizefx = 1600/mera;
-            sizefy = 800/mera;
+                sizefx = 1600 / (mera -20);
+                sizefy = 800 / (mera - 20);
+            }
+            catch { };
+           
 
             kostka = new Rectangle
             {
@@ -303,7 +309,7 @@ namespace Snake
         }
         int exercontrolníhovno = 0;
         State state;
-
+        bool hull = false;
         public void Snake(object source, EventArgs e)
         {      
             
@@ -372,7 +378,8 @@ namespace Snake
                 {
                     scored(1);
                     speed -= 10;
-                    myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed);
+                    try { myTimer.Interval = new TimeSpan(0, 0, 0, 0, speed); }
+                    catch { };
                     genratorjakdebil();
                     leng++;
                 }
@@ -386,8 +393,9 @@ namespace Snake
                 }
                 else if(x == hulx && y == huly)
                 {
-                    changesize(scale - 20);
+                    changesize(scale);
                     genratorjakdebil();
+                    vyhulost();
                 }    
             }
 
@@ -415,6 +423,8 @@ namespace Snake
             myTimer.Stop();
             main.Children.Clear();
             fdgd.IsEnabled = true;
+            Score scer = new Score(scores, highscor);
+            scer.Show();
         }
 
         Rectangle head = null;
@@ -474,9 +484,10 @@ namespace Snake
         bool contolremod = false;
         public void contorler(object source, EventArgs e)
         {
-            state = cntr1.GetState();
+            
             if (contolremod == true)
             {
+                state = cntr1.GetState();
                 switch (state.Gamepad.Buttons)
                 {
                     case GamepadButtonFlags.DPadUp:
@@ -547,16 +558,29 @@ namespace Snake
                 }
             }
         }
+        Rectangle body;
 
         private void drawexces(int x, int y, Canvas c)
         {
-            Rectangle body = new Rectangle 
+            body = new Rectangle 
             {
                 Height = scale,
                 Width = scale,
                 Fill = new SolidColorBrush(Color.FromArgb(128, 16, 82, 14))
             };
-
+            if(hull == true)
+            {
+                body = new Rectangle
+                {
+                    Height = scale,
+                    Width = scale,
+                    Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(@"rainbow-spectrum-texture-background-iridescent-vector-8792913.jpg", UriKind.Relative))
+                    }
+                };
+                hull = false;
+            }
             
             c.Children.Add(body);
             Canvas.SetLeft(body, x * scale);
@@ -578,6 +602,11 @@ namespace Snake
             {
                 contolremod = false;
             }
+        }
+
+        public void vyhulost()
+        {
+            hull = true;
         }
     }
 }
