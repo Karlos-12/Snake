@@ -9,7 +9,8 @@
     <Grid>
         <Label x:Name="sc" Content="Label" Height="108" Margin="0,100,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Consolas" FontSize="90" FontWeight="Bold"/>
         <ProgressBar x:Name="prr" Margin="50,0,50,50" Height="102" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="White" Foreground="#FF5BB76C"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="71" Margin="229,333,0,0" VerticalAlignment="Top" Width="427" Click="Button_Click"/>
+        <Button x:Name="ggg" Content="Sign your score" Margin="230,0,230,15" Click="Button_Click" Height="70" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="#FF383838" Foreground="White" FontWeight="Bold" FontFamily="Consolas" FontSize="36"/>
+        <Label x:Name="fight" Content="někdomore" Margin="0,0,50,100" FontSize="24" FontWeight="Bold" FontFamily="Consolas" Background="{x:Null}" Foreground="#FF4D4D4D" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Height="41" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="348"/>
 
     </Grid>
 </Window>

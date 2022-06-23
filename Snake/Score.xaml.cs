@@ -34,6 +34,7 @@ namespace Snake
             sc.Content = "Your score is:" + scor;
             prr.Value = scor;
             scoros = scor;
+           
         }
       
         IFirebaseConfig ifc = new FirebaseConfig
@@ -51,16 +52,21 @@ namespace Snake
             NONI = non.ResultAs<highscore>();
             prr.Maximum = NONI.score;
 
-            
+            if (NONI.score > scoros)
+            {
+                ggg.Visibility = Visibility.Hidden;
+            }
+            fight.Content = NONI.pps;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-            string pp = Interaction.InputBox("Your name?", "Well done", "Name..");
-
             if (NONI.score < scoros)
             {
+                string pp = Interaction.InputBox("Your name?", "Well done", "Name..");
+                System.Threading.Thread.Sleep(1000);
+
                 highscore hgh = new highscore()
                 {
                     name = "best",
@@ -69,6 +75,10 @@ namespace Snake
                 };
 
                 var setter = client.Set("winnerlist/" + hgh.name, hgh);
+            }
+            else
+            {
+                ggg.Visibility = Visibility.Hidden;
             }
         }
     }
